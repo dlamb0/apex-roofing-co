@@ -14,18 +14,21 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  // Reset menus when the route changes — adjusted during render per React 19 guidance
+  // (https://react.dev/reference/react/useState#storing-information-from-previous-renders).
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMobileOpen(false);
+    setActiveDropdown(null);
+  }
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close menus when route changes
-  useEffect(() => {
-    setMobileOpen(false);
-    setActiveDropdown(null);
-  }, [pathname]);
 
   const isHome = pathname === "/";
 
