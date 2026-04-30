@@ -1,0 +1,201 @@
+import type { Service, Testimonial, NavItem, PricingTier } from "@/types";
+
+export const COMPANY = {
+  name: "Apex Roofing Co.",
+  shortName: "Apex Roofing",
+  tagline: "Built to Last. Proven to Protect.",
+  phone: "(612) 555-0187",
+  email: "info@apexroofingco.com",
+  address: "4821 Industrial Blvd, Minneapolis, MN 55413",
+  founded: 1998,
+  yearsExperience: 28,
+  projectsCompleted: 4800,
+  warrantyYears: 25,
+  serviceRadius: "50-mile radius of Minneapolis–St. Paul",
+  license: "MN Lic. #BC642817",
+  insurance: "Fully bonded & insured",
+  googleRating: 4.9,
+  reviewCount: 312,
+};
+
+export const NAV_ITEMS: NavItem[] = [
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Residential Roofing", href: "/services/residential" },
+      { label: "Commercial Roofing", href: "/services/commercial" },
+      { label: "Storm Damage & Repair", href: "/services/storm-damage" },
+      { label: "Gutters & Accessories", href: "/services/gutters" },
+    ],
+  },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const SERVICES: Service[] = [
+  {
+    id: "residential",
+    title: "Residential Roofing",
+    slug: "residential",
+    description: "Complete roof replacement and repair for homes of all sizes, using premium materials built for Minnesota winters.",
+    longDescription: "From asphalt shingles to metal roofing, our residential team handles everything from minor repairs to complete tear-offs. We work with all major insurance companies and offer flexible financing options. Every installation comes with our industry-leading 25-year workmanship warranty.",
+    icon: "Home",
+    features: ["Free inspection & estimate", "Insurance claim assistance", "25-year workmanship warranty", "Asphalt, metal & cedar options", "Energy-efficient upgrades", "Same-day emergency service"],
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    priceRange: "$8,000 – $22,000",
+    duration: "1–3 days",
+  },
+  {
+    id: "commercial",
+    title: "Commercial Roofing",
+    slug: "commercial",
+    description: "Flat, TPO, EPDM, and metal roofing systems for commercial buildings, warehouses, and retail properties.",
+    longDescription: "Apex Roofing is a certified installer for all major commercial roofing systems including TPO, EPDM, modified bitumen, and standing seam metal. We minimize business disruption with phased installation schedules and after-hours work availability.",
+    icon: "Building2",
+    features: ["TPO, EPDM & metal systems", "Phased installation scheduling", "Preventive maintenance plans", "Rooftop equipment flashing", "Manufacturer certifications", "Emergency response 24/7"],
+    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
+    priceRange: "$15,000 – $120,000",
+    duration: "3–14 days",
+  },
+  {
+    id: "storm-damage",
+    title: "Storm Damage & Repair",
+    slug: "storm-damage",
+    description: "Rapid response hail and wind damage assessment, tarping, and full restoration with insurance claim expertise.",
+    longDescription: "Minnesota's severe weather season means fast response matters. Our storm damage team is on call 24/7 with emergency tarping and board-up services. We're experienced insurance claim advocates — we document all damage thoroughly and work directly with your adjuster to maximize your claim.",
+    icon: "CloudLightning",
+    features: ["24/7 emergency response", "Insurance claim advocacy", "Hail & wind damage experts", "Emergency tarping & board-up", "Direct adjuster coordination", "Supplement filing"],
+    image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1200&q=80",
+    priceRange: "Covered by insurance",
+    duration: "Same day – 1 week",
+  },
+  {
+    id: "gutters",
+    title: "Gutters & Accessories",
+    slug: "gutters",
+    description: "Seamless aluminum and copper gutters, leaf guards, fascia, soffit, and full exterior drainage solutions.",
+    longDescription: "A complete roofing job isn't finished without proper drainage. We install seamless K-style and half-round gutters in aluminum, steel, and copper. Our gutter protection systems dramatically reduce cleaning frequency and prevent ice dams — a critical concern in Minnesota winters.",
+    icon: "Droplets",
+    features: ["Seamless gutter fabrication", "K-style & half-round profiles", "Leaf guard installation", "Fascia & soffit repair", "Downspout extensions", "Ice dam prevention systems"],
+    image: "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=1200&q=80",
+    priceRange: "$1,200 – $4,800",
+    duration: "Half-day – 2 days",
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "1",
+    name: "Karen Hoffstedt",
+    location: "Eden Prairie, MN",
+    rating: 5,
+    review: "After the hail storm in June, our entire neighborhood needed new roofs. Apex was the only company that came out the same day, tarped our damage, and had an adjuster on the phone within 24 hours. Insurance covered 100% and the new roof looks incredible. Could not recommend more highly.",
+    service: "Storm Damage",
+    date: "August 2024",
+    avatar: "KH",
+  },
+  {
+    id: "2",
+    name: "Marcus Delvechio",
+    location: "Edina, MN",
+    rating: 5,
+    review: "Full roof replacement on a 3,200 sq ft home. The crew showed up at 7am sharp, laid down protection on every inch of my landscaping, and had the entire job finished and cleaned up by 4pm the same day. Not a single shingle or nail left behind. Absolute professionals.",
+    service: "Residential",
+    date: "July 2024",
+    avatar: "MD",
+  },
+  {
+    id: "3",
+    name: "Susan & Tom Brinkley",
+    location: "Minnetonka, MN",
+    rating: 5,
+    review: "We got five quotes and Apex wasn't the cheapest, but the sales process was completely no-pressure and the 25-year workmanship warranty sealed it. Two years later the roof is perfect and we've recommended them to four neighbors who all had great experiences.",
+    service: "Residential",
+    date: "May 2024",
+    avatar: "SB",
+  },
+  {
+    id: "4",
+    name: "Jim Paulsen",
+    location: "Plymouth, MN",
+    rating: 5,
+    review: "Managed the commercial re-roof on our 18,000 sq ft warehouse. They worked nights and weekends to avoid disrupting our operations. Finished ahead of schedule, under budget, and the TPO system has been flawless through two Minnesota winters. Best contractor experience I've had in 20 years of facilities management.",
+    service: "Commercial",
+    date: "October 2023",
+    avatar: "JP",
+  },
+  {
+    id: "5",
+    name: "Alyssa Nguyen",
+    location: "Bloomington, MN",
+    rating: 5,
+    review: "The seamless gutters and leaf guards they installed last fall completely solved our ice dam problem. We used to spend hundreds every winter on de-icing cables. The Apex solution was cleaner, more permanent, and honestly looks better than our old gutters.",
+    service: "Gutters",
+    date: "November 2023",
+    avatar: "AN",
+  },
+  {
+    id: "6",
+    name: "Robert Cassidy",
+    location: "Wayzata, MN",
+    rating: 5,
+    review: "What sets Apex apart is communication. I got a text or call at every single milestone — when materials were ordered, when they were delivered, when the crew was on the way. In this industry that's rare. Top-tier operation from estimate to final walkthrough.",
+    service: "Residential",
+    date: "September 2024",
+    avatar: "RC",
+  },
+  {
+    id: "7",
+    name: "Deborah Larsen",
+    location: "Maple Grove, MN",
+    rating: 5,
+    review: "Cedar shake tear-off and replacement with a premium architectural shingle system. The crew was respectful of our property, careful around our flower beds, and the project manager walked us through every decision. The roof is absolutely stunning.",
+    service: "Residential",
+    date: "June 2024",
+    avatar: "DL",
+  },
+  {
+    id: "8",
+    name: "Tony Espinoza",
+    location: "Burnsville, MN",
+    rating: 4,
+    review: "Great work overall on our commercial strip mall. A few minor scheduling delays, but the project manager communicated proactively each time. The finished EPDM system is top quality and they handled the rooftop HVAC flashing perfectly.",
+    service: "Commercial",
+    date: "August 2024",
+    avatar: "TE",
+  },
+];
+
+export const PRICING_TIERS: PricingTier[] = [
+  {
+    name: "Standard",
+    pricePerSqFt: 4.5,
+    features: ["3-tab or entry-level architectural shingles", "Standard underlayment", "10-year workmanship warranty", "Basic ridge vent system", "Aluminum drip edge"],
+  },
+  {
+    name: "Premium",
+    pricePerSqFt: 6.5,
+    features: ["30-year architectural shingles", "Synthetic underlayment", "25-year workmanship warranty", "High-flow ridge ventilation", "Ice & water shield valleys", "Copper drip edge"],
+    recommended: true,
+  },
+  {
+    name: "Elite",
+    pricePerSqFt: 9.0,
+    features: ["50-year impact-resistant shingles", "Premium synthetic underlayment", "Lifetime workmanship warranty", "Full ice & water shield coverage", "Copper flashing throughout", "Smart ventilation system"],
+  },
+];
+
+export const STATS = [
+  { value: 26, suffix: "+", label: "Years in Business" },
+  { value: 4800, suffix: "+", label: "Roofs Completed" },
+  { value: 4.9, suffix: "★", label: "Google Rating" },
+  { value: 25, suffix: "-yr", label: "Workmanship Warranty" },
+];
+
+export const SERVICE_AREAS = [
+  "Minneapolis", "St. Paul", "Edina", "Eden Prairie", "Plymouth",
+  "Minnetonka", "Bloomington", "Burnsville", "Eagan", "Maple Grove",
+  "Wayzata", "Stillwater", "Woodbury", "Cottage Grove", "Prior Lake",
+];
