@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
-import { COMPANY, NAV_ITEMS, SERVICE_AREAS, SERVICES } from "@/lib/constants";
+import { COMPANY, SERVICE_AREAS, SERVICES } from "@/lib/constants";
 import { Phone, Mail, MapPin, Star, Shield, Clock } from "lucide-react";
 
 export function Footer() {

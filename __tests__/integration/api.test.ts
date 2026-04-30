@@ -120,7 +120,7 @@ describe("Quote API Route", () => {
 
   it("returns 400 for missing city", async () => {
     const { POST } = await import("@/app/api/quote/route");
-    const { city: _, ...withoutCity } = validQuotePayload;
+    const { city: _city, ...withoutCity } = validQuotePayload;
     const request = new Request("http://localhost/api/quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

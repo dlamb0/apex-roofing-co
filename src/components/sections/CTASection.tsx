@@ -1,4 +1,4 @@
-import { Section, Container } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { COMPANY } from "@/lib/constants";
 import { Phone, ArrowRight } from "lucide-react";

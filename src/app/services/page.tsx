@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Section, Container, SectionHeading, Badge } from "@/components/ui/Section";
+import { Section, Container, Badge } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
 import { SERVICES } from "@/lib/constants";
 import { ArrowRight } from "lucide-react";

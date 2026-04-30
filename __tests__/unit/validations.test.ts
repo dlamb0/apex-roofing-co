@@ -40,7 +40,7 @@ describe("contactSchema", () => {
   });
 
   it("accepts missing optional phone field", () => {
-    const { phone: _, ...withoutPhone } = { ...validContact, phone: undefined };
+    const { phone: _phone, ...withoutPhone } = { ...validContact, phone: undefined };
     const result = contactSchema.safeParse(withoutPhone);
     expect(result.success).toBe(true);
   });
