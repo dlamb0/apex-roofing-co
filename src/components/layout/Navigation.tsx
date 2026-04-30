@@ -21,6 +21,7 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close menus when route changes
   useEffect(() => {
     setMobileOpen(false);
     setActiveDropdown(null);
