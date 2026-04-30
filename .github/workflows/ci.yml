@@ -55,24 +55,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run unit tests with coverage
-        run: npm run test:coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        if: always()
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/lcov.info
-          fail_ci_if_error: false
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: vitest-coverage
-          path: coverage/
-          retention-days: 14
+      - name: Run unit tests
+        run: npm test
 
   # ─── Job 3: Build ─────────────────────────────────────────────────────────
   build:
@@ -129,11 +113,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: nextjs-build
-          path: .next/
+      - name: Build Next.js app
+        run: npm run build
 
       - name: Run Playwright e2e tests
         run: npm run test:e2e
@@ -200,7 +181,9 @@ jobs:
     name: Deploy Production
     runs-on: ubuntu-latest
     needs: [unit-tests, e2e-tests, build]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Set repo variable CLOUDFLARE_DEPLOY=true after configuring Cloudflare secrets
+    # (CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID) to enable production deploys.
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.CLOUDFLARE_DEPLOY == 'true'
     environment:
       name: production
       url: https://apexroofingco.pages.dev
