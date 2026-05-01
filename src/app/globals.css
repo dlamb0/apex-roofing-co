@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Tailwind v4 theme tokens — replaces the legacy tailwind.config.ts theme.extend.colors. */
+@theme {
+  --color-brand-charcoal: #1a1a2e;
+  --color-brand-charcoal-light: #252540;
+  --color-brand-orange: #e8621a;
+  --color-brand-orange-light: #f07830;
+  --color-brand-orange-dark: #c4521a;
+  --color-brand-cream: #f8f5f0;
+  --color-brand-gray: #6b7280;
+}
+
 :root {
   --font-inter: 'Inter', system-ui, sans-serif;
 }
