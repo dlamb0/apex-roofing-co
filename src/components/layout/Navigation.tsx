@@ -51,7 +51,10 @@ export function Navigation() {
           "sticky top-0 z-50 transition-all duration-300",
           isScrolled || !isHome
             ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
-            : "bg-transparent"
+            : // Subtle dark scrim + blur instead of pure transparent so the
+              // white logo, nav links, and phone number stay readable on the
+              // un-scrolled home page. The hero photo still shows through.
+              "bg-brand-charcoal/35 backdrop-blur-sm"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
