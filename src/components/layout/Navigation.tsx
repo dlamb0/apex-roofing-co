@@ -86,16 +86,23 @@ export function Navigation() {
                         <ChevronDown size={14} className={cn("transition-transform", activeDropdown === item.label && "rotate-180")} />
                       </button>
                       {activeDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className="block px-4 py-2.5 text-sm text-brand-charcoal hover:text-brand-orange hover:bg-brand-cream transition-colors"
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
+                        // Outer wrapper uses pt-1 (padding) instead of mt-1 (margin)
+                        // so the 4px gap between the trigger and the panel is part of
+                        // the wrapper's hit area. Without this, the parent's
+                        // onMouseLeave fires the moment the cursor crosses the gap
+                        // and the dropdown unmounts before the user can click anything.
+                        <div className="absolute top-full left-0 pt-1 w-52 z-50">
+                          <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="block px-4 py-2.5 text-sm text-brand-charcoal hover:text-brand-orange hover:bg-brand-cream transition-colors"
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
