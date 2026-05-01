@@ -81,7 +81,8 @@ test.describe("Quote Form", () => {
 
   test("shows validation errors on empty submit", async ({ page }) => {
     const submitBtn = page.getByRole("button", { name: /Submit Estimate/i });
-    await submitBtn.click();
+    // force:true — sticky <header z-50> can intercept the click after scroll-into-view.
+    await submitBtn.click({ force: true });
     await expect(page.getByText(/required/i).first()).toBeVisible();
   });
 
@@ -97,12 +98,13 @@ test.describe("Quote Form", () => {
     await page.getByPlaceholder("1234 Main St").fill("5678 Oak Ave");
     await page.getByPlaceholder("Minneapolis").fill("Edina");
     await page.locator("select[name='serviceType']").selectOption("residential");
-    await page.locator("input[value='within-month']").click();
+    // force:true — radio is offscreen-styled; sticky header can also intercept on scroll.
+    await page.locator("input[value='within-month']").click({ force: true });
     await page.locator("textarea[name='description']").fill(
       "I need a full roof replacement for my home. The roof is about 20 years old and showing wear."
     );
 
-    await page.getByRole("button", { name: /Submit Estimate/i }).click();
+    await page.getByRole("button", { name: /Submit Estimate/i }).click({ force: true });
     await expect(page.getByText(/Request Received/i)).toBeVisible({ timeout: 10000 });
   });
 });
