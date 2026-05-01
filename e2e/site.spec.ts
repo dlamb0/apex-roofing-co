@@ -50,7 +50,10 @@ test.describe("Navigation", () => {
     await page.goto("/");
     const servicesNav = page.getByRole("button", { name: /Services/i }).first();
     await servicesNav.hover();
-    await expect(page.getByRole("link", { name: /Residential Roofing/i })).toBeVisible();
+    // Scope to <header> so we don't collide with the same link in the footer.
+    await expect(
+      page.locator("header").getByRole("link", { name: /Residential Roofing/i })
+    ).toBeVisible();
   });
 
   test("mobile menu opens and closes", async ({ page }) => {
@@ -71,7 +74,8 @@ test.describe("Quote Form", () => {
 
   test("displays form page correctly", async ({ page }) => {
     await expect(page.getByRole("heading", { name: /Free Inspection/i })).toBeVisible();
-    await expect(page.getByPlaceholder("John")).toBeVisible();
+    // exact:true so "John" doesn't also match the "john@example.com" placeholder.
+    await expect(page.getByPlaceholder("John", { exact: true })).toBeVisible();
     await expect(page.getByPlaceholder("john@example.com")).toBeVisible();
   });
 
@@ -86,8 +90,8 @@ test.describe("Quote Form", () => {
       await route.fulfill({ json: { success: true }, status: 200 });
     });
 
-    await page.getByPlaceholder("John").fill("Jane");
-    await page.getByPlaceholder("Smith").fill("Doe");
+    await page.getByPlaceholder("John", { exact: true }).fill("Jane");
+    await page.getByPlaceholder("Smith", { exact: true }).fill("Doe");
     await page.getByPlaceholder("john@example.com").fill("jane@test.com");
     await page.getByPlaceholder("(612) 555-0100").fill("6125550199");
     await page.getByPlaceholder("1234 Main St").fill("5678 Oak Ave");
@@ -138,7 +142,8 @@ test.describe("About Page", () => {
   test("loads with team section", async ({ page }) => {
     await page.goto("/about");
     await expect(page.getByRole("heading", { name: /Years of Protecting/i })).toBeVisible();
-    await expect(page.getByText(/Mike Halvorsen/i)).toBeVisible();
+    // Use the team-card heading specifically — the founder name also appears in body copy.
+    await expect(page.getByRole("heading", { name: /Mike Halvorsen/i })).toBeVisible();
   });
 });
 
